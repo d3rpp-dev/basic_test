@@ -5,10 +5,11 @@
 #define $nl std::endl << std::endl
 
 const float PI = 3.14;
+const std::string PROMPT = " >> ";
 
 namespace take {
 	std::string string(std::string q) {
-		std::cout << q << std::endl << " >> ";
+		std::cout << q << std::endl << PROMPT;
 		std::string a;
 
 		std::getline(std::cin, a);
@@ -17,7 +18,7 @@ namespace take {
 	}
 
 	int number(std::string q) {
-		std::cout << q << std::endl << " >> ";
+		std::cout << q << std::endl << PROMPT;
 		int i;
 
 		std::cin >> i;
@@ -26,7 +27,7 @@ namespace take {
 	}
 
 	float decimal(std::string q) {
-		std::cout << q << std::endl << " >> ";
+		std::cout << q << std::endl << PROMPT;
 		float f;
 
 		std::cin >> f;
