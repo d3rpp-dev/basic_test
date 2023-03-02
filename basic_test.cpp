@@ -4,7 +4,7 @@
 
 #define $nl std::endl << std::endl
 
-const float PI = 3.14;
+const float PI = 3.141592;
 const std::string PROMPT = " >> ";
 
 namespace take {
