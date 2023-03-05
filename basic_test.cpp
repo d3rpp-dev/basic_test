@@ -1,6 +1,9 @@
 ﻿#include "common.h"
 #define NL std::endl << std::endl
 
+#define _CRT_SECURE_NO_WARNINGS
+#pragma warning(disable : 4996)
+
 constexpr auto PI = (float)3.14159;
 constexpr auto PROMPT = " = ";
 
