@@ -61,7 +61,15 @@ namespace fns {
 			f_num{ 17 },
 			s_num{ 3 };
 
-		std::cout << "First Number: " << f_num << std::endl << "Second Number: " << s_num << NL << "\x0a\x0d";
+		std::cout << "First Number: " << f_num << std::endl << "Second Number: " << s_num << NL;
+	}
+
+	void bitshift_neg() {
+		int a = -32;
+
+		int b = a << 1;
+
+		std::cout << "A: " << a << std::endl << "B: " << b << NL;
 	}
 
 	void print_name() {
@@ -131,6 +139,7 @@ namespace fns {
 
 int main() {
 	fns::test_numbers();
+	fns::bitshift_neg();
 	fns::print_nums();
 	fns::print_name();
 	fns::quadratic();
