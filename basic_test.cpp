@@ -33,7 +33,7 @@ namespace take {
 	}
 }
 
-namespace ops {
+namespace io_ops {
 	void print_nums() {
 		int
 			f_num{ 17 },
@@ -82,15 +82,61 @@ namespace ops {
 
 		std::cout << "x^2 + y^2 = " << powf(f_x, 2) + powf(f_y, 2) << NL;
 	}
+
+	void test_numbers() {
+		int a = 1, b = 2;
+
+		ops::add(a, b);
+		ops::sub(a, b);
+		ops::mul(a, b);
+		ops::div(a, b);
+
+		float c = 3.12, d = 2.8;
+
+		ops::add(c, d);
+		ops::sub(c, d);
+		ops::mul(c, d);
+		ops::div(c, d);
+
+		double e = 1.12, f = 2.342;
+
+		ops::add(e, f);
+		ops::sub(e, f);
+		ops::mul(e, f);
+		ops::div(e, f);
+	}
+}
+
+namespace ops {
+	template<typename T>
+	T add(T lhs, T rhs) {
+		return lhs + rhs;
+	}
+
+	template<typename T>
+	T sub(T lhs, T rhs) {
+		return lhs - rhs;
+	}
+
+	template<typename T>
+	T mul(T lhs, T rhs) {
+		return lhs * rhs;
+	}
+
+	template<typename T>
+	T div(T lhs, T rhs) {
+		return lhs / rhs;
+	}
 }
 
 int main() {
-	ops::print_nums();
-	ops::print_name();
-	ops::quadratic();
-	ops::area();
-	ops::compounding_interest();
-	ops::graph_a_circle();
+	io_ops::test_numbers();
+	io_ops::print_nums();
+	io_ops::print_name();
+	io_ops::quadratic();
+	io_ops::area();
+	io_ops::compounding_interest();
+	io_ops::graph_a_circle();
 
 	return 0;
 }
