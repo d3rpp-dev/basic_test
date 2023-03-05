@@ -4,20 +4,37 @@
 #define _CRT_SECURE_NO_WARNINGS
 #pragma warning(disable : 4996)
 
+#define u8 char
+#define u16 short unsigned int
+#define u32 unsigned int
+#define u64 unsigned long
+#define u128 unsigned long long
+
+#define i8 signed char
+#define i16 short signed int
+#define i32 signed int
+#define i64 signed long
+#define i128 signed long long
+
+#define f32 float
+#define f64 double
+
+#define str std::string
+
 constexpr auto PI = (float)3.14159;
 constexpr auto PROMPT = " = ";
 
 namespace take {
-	std::string string(std::string query) {
+	str stri(str query) {
 		std::cout << query << PROMPT;
-		std::string a;
+		str a;
 
 		std::getline(std::cin, a);
 
 		return a;
 	}
 
-	int number(std::string query) {
+	int number(str query) {
 		std::cout << query << PROMPT;
 		int i;
 
@@ -26,7 +43,7 @@ namespace take {
 		return i;
 	}
 
-	float decimal(std::string query) {
+	float decimal(str query) {
 		std::cout << query << PROMPT;
 		float f;
 
@@ -78,7 +95,7 @@ namespace ops {
 
 namespace fns {
 	void print_nums() {
-		int
+		i32
 			f_num = 17,
 			s_num = 3;
 
@@ -86,17 +103,17 @@ namespace fns {
 	}
 
 	void bitshift_neg() {
-		int a = -32;
+		i32 a = -32;
 
-		int b = a << 1;
+		i32 b = a << 1;
 
 		std::cout << "A: " << a << std::endl << "B: " << b << NL;
 	}
 
 	void random_garbage() {
 		std::cout << "random garbage: ";
-		for (int _i = 0; _i < 100; _i++) {
-			int a = std::rand();
+		for (i32 _i = 0; _i < 100; _i++) {
+			i32 a = std::rand();
 
 			std::cout << a << ", ";
 		}
@@ -104,15 +121,15 @@ namespace fns {
 	}
 
 	void print_name() {
-		std::string
-			s_a = take::string("fname"),
-			s_b = take::string("lname");
+		str
+			s_a = take::stri("fname"),
+			s_b = take::stri("lname");
 
 		std::cout << "Hello, " << s_a << " " << s_b << NL;
 	}
 
 	void quadratic() {
-		int
+		i32
 			i_a = take::number("a"),
 			i_x = take::number("x"),
 			i_b = take::number("b");
@@ -121,14 +138,14 @@ namespace fns {
 	}
 
 	void area() {
-		float
+		f32
 			f_radius = take::decimal("radius");
 
 		std::cout << "pi * r^2 = " << ops::mul(PI, powf(f_radius, 2)) << NL;
 	}
 
 	void compounding_interest() {
-		float
+		f32
 			f_principle = take::decimal("Principle"),
 			f_rate = take::decimal("Interest Rate"),
 			f_t = take::decimal("Time (years)");
@@ -137,7 +154,7 @@ namespace fns {
 	}
 
 	void graph_a_circle() {
-		float
+		f32
 			f_x = take::decimal("x"),
 			f_y = take::decimal("y");
 
@@ -145,21 +162,21 @@ namespace fns {
 	}
 
 	void test_numbers() {
-		int a = 1, b = 2;
+		i32 a = 1, b = 2;
 
 		ops::add(a, b);
 		ops::sub(a, b);
 		ops::mul(a, b);
 		ops::div(a, b);
 
-		float c = (float)3.12, d = (float)2.8;
+		f32 c = (float)3.12, d = (float)2.8;
 
 		ops::add(c, d);
 		ops::sub(c, d);
 		ops::mul(c, d);
 		ops::div(c, d);
 
-		double e = 1.12, f = 2.342;
+		f64 e = 1.12, f = 2.342;
 
 		ops::add(e, f);
 		ops::sub(e, f);
