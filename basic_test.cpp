@@ -33,7 +33,29 @@ namespace take {
 	}
 }
 
-namespace io_ops {
+namespace ops {
+	template<typename T>
+	T add(T lhs, T rhs) {
+		return lhs + rhs;
+	}
+
+	template<typename T>
+	T sub(T lhs, T rhs) {
+		return lhs - rhs;
+	}
+
+	template<typename T>
+	T mul(T lhs, T rhs) {
+		return lhs * rhs;
+	}
+
+	template<typename T>
+	T div(T lhs, T rhs) {
+		return lhs / rhs;
+	}
+}
+
+namespace fns {
 	void print_nums() {
 		int
 			f_num{ 17 },
@@ -107,36 +129,14 @@ namespace io_ops {
 	}
 }
 
-namespace ops {
-	template<typename T>
-	T add(T lhs, T rhs) {
-		return lhs + rhs;
-	}
-
-	template<typename T>
-	T sub(T lhs, T rhs) {
-		return lhs - rhs;
-	}
-
-	template<typename T>
-	T mul(T lhs, T rhs) {
-		return lhs * rhs;
-	}
-
-	template<typename T>
-	T div(T lhs, T rhs) {
-		return lhs / rhs;
-	}
-}
-
 int main() {
-	io_ops::test_numbers();
-	io_ops::print_nums();
-	io_ops::print_name();
-	io_ops::quadratic();
-	io_ops::area();
-	io_ops::compounding_interest();
-	io_ops::graph_a_circle();
+	fns::test_numbers();
+	fns::print_nums();
+	fns::print_name();
+	fns::quadratic();
+	fns::area();
+	fns::compounding_interest();
+	fns::graph_a_circle();
 
 	return 0;
 }
