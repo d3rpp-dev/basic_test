@@ -54,6 +54,7 @@ namespace ops {
 		return lhs / rhs;
 	}
 
+	// just for the funny, I've copied the infamous q_rsqrt algorithm
 	float q_rsqrt(float number)
 	{
 		long i;
@@ -90,10 +91,11 @@ namespace fns {
 	}
 
 	void random_garbage() {
+		std::cout << "random garbage: ";
 		for (int _i = 0; _i < 100; _i++) {
 			int a = std::rand();
 
-			std::cout << "random garbage: " << a << std::endl;
+			std::cout << a << ", ";
 		}
 		std::cout << std::endl;
 	}
