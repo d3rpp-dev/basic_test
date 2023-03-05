@@ -1,7 +1,7 @@
 ﻿#include "common.h"
 #define NL std::endl << std::endl
 
-constexpr auto PI = 3.14159;
+constexpr auto PI = (float)3.14159;
 constexpr auto PROMPT = " = ";
 
 namespace take {
@@ -78,14 +78,14 @@ namespace fns {
 			i_x = take::number("x"),
 			i_b = take::number("b");
 
-		std::cout << "ax + b = " << (i_a * i_x) + i_b << NL;
+		std::cout << "ax + b = " <<  ops::add(ops::mul(i_a, i_x), i_b) << NL;
 	}
 
 	void area() {
 		float
 			f_radius = take::decimal("radius");
 
-		std::cout << "pi * r^2 = " << PI * powf(f_radius, 2) << NL;
+		std::cout << "pi * r^2 = " << ops::mul(PI, powf(f_radius, 2)) << NL;
 	}
 
 	void compounding_interest() {
@@ -94,7 +94,7 @@ namespace fns {
 			f_rate = take::decimal("Interest Rate"),
 			f_t = take::decimal("Time (years)");
 
-		std::cout << "P(1+rt) = " << f_principle * (1 + (f_rate * f_t)) << NL;
+		std::cout << "P(1+rt) = " << ops::mul(f_principle, ops::add(1.0f, ops::mul(f_rate, f_t))) << NL;
 	}
 
 	void graph_a_circle() {
@@ -102,7 +102,7 @@ namespace fns {
 			f_x = take::decimal("x"),
 			f_y = take::decimal("y");
 
-		std::cout << "x^2 + y^2 = " << powf(f_x, 2) + powf(f_y, 2) << NL;
+		std::cout << "x^2 + y^2 = " << ops::add(powf(f_x, 2), powf(f_y, 2)) << NL;
 	}
 
 	void test_numbers() {
