@@ -319,6 +319,40 @@ namespace more_fns {
 			std::cout << "Big Endian" << NL;
 		}
 	}
+
+	void print_base() {
+		const i16 data = 0xdead;
+
+		std::cout << "data[dec]: " << std::showbase << std::dec << data << std::endl;
+		std::cout << "data[hex]: " << std::showbase << std::hex << data << std::endl;
+		std::cout << "data[oct]: " << std::showbase << std::oct << data << std::endl;
+		std::cout << "data[bin]: " << std::bitset<16>(data) << std::endl;
+	}
+
+	void bit_tinkering() {
+		u8 a = 0b0101010101;
+		u8 b = 0b1001001001;
+
+		std::cout << std::bitset<8>(a) << std::endl << std::bitset<8>(b) << " &" << std::endl << "--------" << std::endl << std::bitset<8>(a & b) << NL;
+
+
+		std::cout << std::bitset<8>(a) << std::endl << std::bitset<8>(b) << " |" << std::endl << "--------" << std::endl << std::bitset<8>(a | b) << NL;
+	}
+
+	void internal_task() {
+		i32 num = take::number<i32>("Number");
+
+		// optimised
+		if (num > 0) {
+			std::cout << "Positive" << NL;
+		}
+		else if (num < 0) {
+			std::cout << "Negative" << NL;
+		}
+		else {
+			std::cout << "Zero" << NL;
+		}
+	}
 }
 
 int main() {
@@ -337,7 +371,10 @@ int main() {
 
 	// more_fns::multiple_choice();
 	// more_fns::profit_counter();
-	more_fns::calculate_endianess();
+	// more_fns::calculate_endianess();
+	// more_fns::print_base();
+	// more_fns::bit_tinkering();
+	// more_fns::internal_task();
 
 	return 0;
 }
