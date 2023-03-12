@@ -224,6 +224,7 @@ namespace more_fns {
 			do {
 				str operand = take::word("Operand (or e to exit) [+-*/e]");
 
+				// trim whitespace from string
 				trim(operand);
 
 				if (operand.length() < 1) { 
@@ -252,10 +253,16 @@ namespace more_fns {
 			std::cout << std::endl;
 
 			if (op == 43) {
-				std::cout << GREEN << input_one << RESET << " + " << GREEN << input_two << RESET << " = " << CYAN << ops::add(input_one, input_two) << RESET << NL;
+				std::cout 
+					<< GREEN << input_one << RESET 
+					<< " + " 
+					<< GREEN << input_two << RESET 
+					<< " = " 
+					<< CYAN << ops::add(input_one, input_two) << RESET 
+					<< NL;
 			} 
 			else if (op == 42) {
-				std::cout << GREEN << input_one << RESET << " * " << GREEN << input_two << RESET << " * " << CYAN << ops::mul(input_one, input_two) << RESET << NL;
+				std::cout << GREEN << input_one << RESET << " × " << GREEN << input_two << RESET << " = " << CYAN << ops::mul(input_one, input_two) << RESET << NL;
 			}
 			else if (op == 45) {
 				std::cout << GREEN << input_one << RESET << " - " << GREEN << input_two << RESET << " = " << CYAN << ops::sub(input_one, input_two) << RESET << NL;
@@ -266,6 +273,25 @@ namespace more_fns {
 
 		// main loop
 		} while (!should_exit);
+	}
+
+	void profit_counter() {
+		i32 income, cost;
+
+		income = take::number<i32>("Income");
+		cost   = take::number<i32>("Cost");
+
+		i32 profit_or_loss = income - cost;
+
+		if (profit_or_loss > 0) {
+			std::cout << "Profit: $" << profit_or_loss << NL;
+		}
+		else if (profit_or_loss == 0) {
+			std::cout << "Broke Even, no profit or loss." << NL;
+		}
+		else {
+			std::cout << "Loss: $" << profit_or_loss << NL;
+		}
 	}
 }
 
@@ -283,7 +309,8 @@ int main() {
 	// fns::compounding_interest();
 	// fns::graph_a_circle();
 
-	more_fns::multiple_choice();
+	// more_fns::multiple_choice();
+	more_fns::profit_counter();
 
 	return 0;
 }
