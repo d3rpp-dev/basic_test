@@ -293,6 +293,32 @@ namespace more_fns {
 			std::cout << "Loss: $" << profit_or_loss << NL;
 		}
 	}
+
+	void calculate_endianess() {
+		i32 n = 1;
+
+		// borrowed from https://stackoverflow.com/a/4181991
+		//
+		// cast a reference to an 32-bit integer to a 
+		// character pointer which will take the first 
+		// byte and represent it as a char.
+		// 
+		// in a 32-bit integer in little-endian, the 
+		// first byte will contain the first bytes, 
+		// so if our value (1) can be found here, the 
+		// system is little-endian, otherwise it is 
+		// big-endian.
+		//
+		// it's worth noting that the other 3 bytes are 
+		// leaked, so don't do this in a loop or you'll 
+		// have a memory leak.
+		if (*(char*)&n == 1) {
+			std::cout << "Little Endian" << NL;
+		}
+		else {
+			std::cout << "Big Endian" << NL;
+		}
+	}
 }
 
 int main() {
@@ -310,7 +336,8 @@ int main() {
 	// fns::graph_a_circle();
 
 	// more_fns::multiple_choice();
-	more_fns::profit_counter();
+	// more_fns::profit_counter();
+	more_fns::calculate_endianess();
 
 	return 0;
 }
