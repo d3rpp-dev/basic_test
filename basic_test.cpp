@@ -23,6 +23,8 @@ namespace take {
 		std::cin.clear();
 		fflush(stdin);
 		std::cin >> a;
+		std::cin.clear();
+		fflush(stdin);
 
 		return a;
 	}
@@ -355,6 +357,132 @@ namespace more_fns {
 	}
 }
 
+namespace even_more_fns {
+	void divisible() {
+		i32 num = take::number<i32>("Number");
+
+		bool by_three = num % 3 == 0;
+		bool by_five = num % 5 == 0;
+
+		if (by_five && by_three) {
+			std::cout << "Divisible by 3 & 5" << NL;
+		} else {
+			if (by_five) {
+				std::cout << "Divisible by 5" << NL;
+			}
+			else if (by_three) {
+				std::cout << "Divisible by 3" << NL;
+			}
+			else {
+				std::cout << "Divisible by neither 3 or 5" << NL;
+			}
+		}
+	}
+
+	void bitwise_ops() {
+		i16 a = take::number<i16>("First Number"),
+			b = take::number<i16>("Second Number");
+
+		std::cout <<
+			"| " << std::bitset<16>(a) << " | 0x" << std::hex << a << std::endl <<
+			"| " << std::bitset<16>(b) << " | 0x" << std::hex << b << std::endl <<
+			"|-" << "----------------" << "-| &" << std::endl <<
+			"| " << std::bitset<16>(a & b) << " |" << NL;
+
+		std::cout <<
+			"| " << std::bitset<16>(a) << " | 0x" << std::hex << a << std::endl <<
+			"| " << std::bitset<16>(b) << " | 0x" << std::hex << b << std::endl <<
+			"|_" << "----------------" << "_| |" << std::endl <<
+			"| " << std::bitset<16>(a | b) << " |" << NL;
+
+		std::cout <<
+			"| " << std::bitset<16>(a) << " | 0x" << std::hex << a << std::endl <<
+			"| " << std::bitset<16>(b) << " | 0x" << std::hex << b << std::endl <<
+			"|-" << "----------------" << "-| ^" << std::endl <<
+			"| " << std::bitset<16>(a ^ b) << " |" << NL;
+
+		std::cout << std::bitset<16>(a) << " << " << 2 << " = " << std::bitset<16>(a << 2) << NL;
+
+		std::cout << std::bitset<16>(a) << " >> " << 2 << " = " << std::bitset<16>(a >> 2) << NL;
+	}
+
+	void spite() {
+		bool
+			red = false,
+			amber = false,
+			green = true,
+			cops = true;
+
+		if (red || cops) {
+			std::cout << "Stop" << NL;
+		}
+		else if (amber) {
+			std::cout << "Slow Down" << NL;
+		}
+		else if (green) {
+			std::cout << "GO" << NL;
+		}
+		else {
+			// this should never occur bit it is an edge case where the lights are not red, amber, or green, & there is no police stop
+			//
+			// assume the traffic lights have crashed and are in "well f*ck" mode.
+			exit(1234);
+		}
+	}
+
+	void switch_my_existence() {
+		const char* months[12] = {
+			"January",
+			"February",
+			"March",
+			"April",
+			"May",
+			"June",
+			"July",
+			"August",
+			"September",
+			"November",
+			"December"
+		};
+
+		bool should_exit = false;
+
+		do {
+			i32 month = take::number<i32>("Month [1-12]");
+
+			/* 
+			switch (month) {
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+			case 5:
+			case 6:
+			case 7:
+			case 8:
+			case 9:
+			case 10:
+			case 11:
+			case 12:
+				std::cout << month << " corresponds to " << months[month - 1] << NL;
+				should_exit = true;
+				break;
+			default:
+				std::cout << "Invalid Month, please try again." << NL;
+			}
+			*/
+
+			if (month > 0 && month <= 12) {
+				std::cout << month << " corresponds to " << months[month - 1] << NL;
+				should_exit = true;
+			} else {
+				std::cout << "Invalid Month, please try again." << NL;
+			}
+			
+		} while (!should_exit);
+	}
+}
+
 int main() {
 	// fns::floating_point();
 	// fns::conditional_programming_is_incredibly_easy();
@@ -375,6 +503,9 @@ int main() {
 	// more_fns::print_base();
 	// more_fns::bit_tinkering();
 	// more_fns::internal_task();
+
+	// even_more_fns::bitwise_ops();
+	even_more_fns::switch_my_existence();
 
 	return 0;
 }
